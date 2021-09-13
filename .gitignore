@@ -1,0 +1,6 @@
+**/*.pyc
+**/__pycache__
+**/.pytest_cache
+**/.serverless
+**/.venv
+**/node_modules
