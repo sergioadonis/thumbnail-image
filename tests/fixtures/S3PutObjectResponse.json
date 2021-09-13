@@ -1,0 +1,17 @@
+{
+    "ResponseMetadata": {
+        "RequestId": "CHQBV57AJ5N2Z8E2",
+        "HostId": "8DtvIUq/JkLjTsmQ44vevXisAijA5hu7It5QQ+yzxA8uFCPjQo0NrvT7FULUf9P5i9y7V3WnBxE=",
+        "HTTPStatusCode": 200,
+        "HTTPHeaders": {
+            "x-amz-id-2": "8DtvIUq/JkLjTsmQ44vevXisAijA5hu7It5QQ+yzxA8uFCPjQo0NrvT7FULUf9P5i9y7V3WnBxE=",
+            "x-amz-request-id": "CHQBV57AJ5N2Z8E2",
+            "date": "Mon, 13 Sep 2021 04:43:17 GMT",
+            "etag": "0123456789abcdef0123456789abcdef",
+            "server": "AmazonS3",
+            "content-length": "0"
+        },
+        "RetryAttempts": 0
+    },
+    "ETag": "0123456789abcdef0123456789abcdef"
+}
