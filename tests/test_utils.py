@@ -6,7 +6,7 @@ from botocore.stub import Stubber
 from botocore.response import StreamingBody
 import pytest
 
-import utils
+from thumbnail_image import utils
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__)) 
