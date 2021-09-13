@@ -1,0 +1,66 @@
+service: hello-python
+# app and org for use with dashboard.serverless.com
+#app: your-app-name
+#org: your-org-name
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: python3.8
+  lambdaHashingVersion: 20201221
+  iamRoleStatements:
+   - Effect: "Allow"
+     Action:
+       - "s3:*"
+     Resource: "arn:aws:s3:::lacuracaoonline-data/*"
+      # Fn::Join:
+      #   - ''
+      #   - - 'arn:aws:s3:::'
+      #     - ${self.custom.bucket_name}
+      #     - '/*'
+
+custom:
+  bucket_name: lacuracaoonline-data
+  pythonRequirements:
+    dockerizePip: true
+    layer:
+      name: PillowLambdaLayer
+      description: Python requirements lambda layer
+      compatibleRuntimes:
+        - python3.8
+      noDeploy:
+        - pytest
+        - autopep8
+
+package:
+  individually: true
+  patterns:
+    - '!tmp/**'
+    - '!.git/**'
+    - '!__pycache__/**'
+    - '!.pytest_cache/**'
+    - '!.serverless/**'
+    - '!.venv/**'
+    - '!node_modules/**'
+    - '!tests/**'
+    - '!package*.json'
+    - '!requirements.txt'
+
+functions:
+  hello:
+    handler: handler.hello
+    layers:
+      - {Ref: PythonRequirementsLambdaLayer}
+    events:
+      - s3: 
+          bucket: lacuracaoonline-data
+          event: s3:ObjectCreated:*
+          rules:
+            - prefix: pictures/
+            - suffix: .png
+          existing: true
+#      - schedule: rate(10 minutes)
+
+
+plugins:
+  - serverless-python-requirements
