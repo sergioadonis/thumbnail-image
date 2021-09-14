@@ -38,9 +38,11 @@ def test_new_filename():
     filename = FileUtils.new_filename(KEY)
     assert filename == THUMBNAIL_KEY
 
+
 def test_image_to_bytes(image: Image):
     bytes = ImageUtils.image_to_bytes(image)
     assert bytes is not None
+
 
 def test_bytes_to_image(image: Image):
     bytes = ImageUtils.image_to_bytes(image)

@@ -1,11 +1,10 @@
 import pytest
-from tests.fixtures import image, s3_event, s3_client, thumbnail_image, BUCKET, KEY, THUMBNAIL_KEY
+from tests.fixtures import s3_event, s3_client, image, thumbnail_image
 from thumbnail_image.use_cases import UploadThumbnailImageToS3
-from thumbnail_image.utils import FileUtils
 
 
-def test_upload_thumbnail_to_s3(s3_client):
+def test_upload_thumbnail_to_s3(s3_client, s3_event):
     use_case = UploadThumbnailImageToS3(s3_client)
-    url = use_case.execute(BUCKET, KEY)
+    response = use_case.execute(s3_event)
 
-    assert url.endswith('_thumbnail.png')
+    assert response is not None

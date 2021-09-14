@@ -9,7 +9,8 @@ class UploadThumbnailImageToS3:
     def __init__(self, s3_client) -> None:
         self._s3_client = s3_client
     
-    def execute(self, bucket: str, key: str) -> str:
+    def execute(self, s3_event: dict) -> str:
+        bucket, key = AWSUtils.get_s3_data(s3_event)
         if not key.endswith('_thumbnail.png'):
             bytes = AWSUtils.download_s3_object(bucket, key, self._s3_client)
             image = ImageUtils.bytes_to_image(bytes)
