@@ -1,4 +1,3 @@
-from botocore.utils import S3_ACCELERATE_WHITELIST
 from thumbnail_image.utils import AWSUtils, ImageUtils, FileUtils
 
 
